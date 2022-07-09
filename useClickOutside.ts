@@ -1,7 +1,7 @@
 // useClickOutside check if a click happened outside the element (elRef)
 // implemented using Node.contains()
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function useClickOutside(
   elRef: React.RefObject<HTMLButtonElement>,
@@ -10,8 +10,6 @@ export default function useClickOutside(
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (!(elRef?.current?.contains(e.target as Node) && callback)) {
-        console.log(elRef.current);
-        console.log(e.target);
         callback(e);
       }
     };
